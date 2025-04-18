@@ -22,6 +22,9 @@ Route :: prefix('/')->group(function(){
     Route:: get('/Main', 'App\Http\Controllers\Web\Main\Main_cont@index')->name('Web.Main');
     Route:: get('/Profile', 'App\Http\Controllers\Auth\Profile_cont@update')->name('Web.Profile');
     Route:: post('/Profile', 'App\Http\Controllers\Auth\Profile_cont@update')->name('Web.Profile');
+    Route:: get('/ContectUs', 'App\Http\Controllers\Web\Msg\Msg_cont@send')->name('Web.Msg');
+    Route:: post('/ContectUs', 'App\Http\Controllers\Web\Msg\Msg_cont@send')->name('Web.Msg');
+    Route::get('/about', function () {return view('Web.Main.About_view');})->name('about');
 
 
 Route :: prefix('Section')->group(function(){
@@ -39,7 +42,7 @@ Route :: prefix('Post')->group(function(){
 });
 });
 Route :: prefix('Admin')->middleware('adminpanel')->group(function(){
-    Route:: get('/Main', function(){return view('Admin.Main_view');})->name('Admin.Main');
+    Route:: get('/Main', 'App\Http\Controllers\Admin\Main\Main_cont@index')->name('Admin.Main');
 Route :: prefix('Section')->middleware('adminrole')->group(function(){
     Route:: get('Add', 'App\Http\Controllers\Admin\Section\Section_cont@add')->name('Section.Add');
     Route:: post('Add', 'App\Http\Controllers\Admin\Section\Section_cont@add')->name('Section.Add');
@@ -66,6 +69,13 @@ Route :: prefix('Post')->group(function(){
     Route:: post('Update/{id}', 'App\Http\Controllers\Admin\Post\Post_cont@update')->name('Post.Update');
     Route:: get('Delete/{id}', 'App\Http\Controllers\Admin\Post\Post_cont@delete')->name('Post.Delete');
     Route:: post('Delete/{id}', 'App\Http\Controllers\Admin\Post\Post_cont@delete')->name('Post.Delete');
+
+});
+Route :: prefix('Msg')->group(function(){
+
+    Route:: get('/Read/{id}', 'App\Http\Controllers\Admin\Msg\Msg_cont@read')->name('Msg.Read');
+    Route:: post('Delete/{id}', 'App\Http\Controllers\Admin\Msg\Msg_cont@delete')->name('Msg.Delete');
+    Route:: get('/{type}', 'App\Http\Controllers\Admin\Msg\Msg_cont@index')->name('Msg.Index');
 
 });
 Route :: prefix('User')->group(function(){
