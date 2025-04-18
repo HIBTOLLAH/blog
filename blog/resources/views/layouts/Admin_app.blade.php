@@ -20,7 +20,7 @@
     <script src="{{ asset('Admin/vendor/jquery/jquery.min.js') }}"></script>
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-   
+
 
 
 
@@ -70,14 +70,14 @@
 
                         <li>
 
-                            <a href="{{route('Msg.Read',['id'=>$norifications->id])}}">
+                            <a href="{{route('Msg.Read',['id'=>$notification->id])}}">
                                 <div>
-                                    <strong>{{$notifications->data['name']}}</strong>
+                                    <strong>{{$notification->data['name']}}</strong>
                                     <span class="pull-right text-muted">
-                                        <em>{{$notifications->created_at}}</em>
+                                        <em>{{$notification->created_at}}</em>
                                     </span>
                                 </div>
-                                <div>{{$notifications->data['email']}}</div>
+                                <div>{{$notification->data['email']}}</div>
                             </a>
                         </li>
                         @endforeach
